@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>木口尚人 — 社会的処方と作業療法 | Naoto Kiguchi, OT</title>
+  <title>木口直人 — 社会的処方と作業療法 | Naoto Kiguchi, OT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -286,20 +286,143 @@
     .profile-tags { display: flex; flex-wrap: wrap; gap: .38rem; }
     .tag { font-size: .69rem; font-weight: 500; padding: .2rem .62rem; border-radius: 50px; background: var(--teal-lt); color: var(--teal); }
 
-    /* ─── TRENDS ─── */
+    /* ─── TRENDS (long-form article) ─── */
     #trends { background: var(--bg); }
-    .trends-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-    .trend-card {
-      background: var(--white); border-radius: 14px; border: 1px solid var(--border);
-      padding: 1.5rem; box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s;
+    .article { display: flex; flex-direction: column; gap: 1.5rem; }
+    .article-block {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2rem 2.1rem;
+      box-shadow: var(--shadow-sm);
     }
-    .trend-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-    .trend-icon {
-      width: 42px; height: 42px; border-radius: 10px; background: var(--teal-lt);
-      display: flex; align-items: center; justify-content: center; margin-bottom: .95rem; font-size: 1.25rem;
+    .article-block-head {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.1rem;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--border);
     }
-    .trend-card h3 { font-size: .92rem; font-weight: 700; margin-bottom: .4rem; line-height: 1.4; }
-    .trend-card p  { font-size: .82rem; color: var(--text-mid); line-height: 1.78; }
+    .article-num {
+      flex-shrink: 0;
+      width: 38px; height: 38px; border-radius: 9px;
+      background: var(--amber-lt); color: #B86B0A;
+      font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .article-block-head h3 {
+      font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600;
+      color: var(--text); line-height: 1.45; padding-top: .25rem;
+    }
+    .article-block p {
+      font-size: .9rem; color: var(--text-mid);
+      line-height: 1.95; margin-bottom: 1rem;
+    }
+    .article-block p:last-child { margin-bottom: 0; }
+    .article-block strong { color: var(--teal); font-weight: 700; }
+
+    /* 用語ハイライト */
+    .term {
+      background: var(--teal-lt); color: var(--teal);
+      font-weight: 500; padding: .05rem .35rem; border-radius: 4px;
+      font-size: .95em;
+    }
+
+    /* プロセステーブル */
+    .process-table {
+      width: 100%; border-collapse: collapse;
+      margin: 1.2rem 0; font-size: .86rem;
+    }
+    .process-table th {
+      background: var(--teal); color: #fff;
+      text-align: left; padding: .7rem .9rem;
+      font-weight: 600; font-size: .84rem;
+    }
+    .process-table th:first-child { border-radius: 8px 0 0 0; width: 30%; }
+    .process-table th:last-child  { border-radius: 0 8px 0 0; }
+    .process-table td {
+      padding: .75rem .9rem; border-bottom: 1px solid var(--border);
+      vertical-align: top; color: var(--text-mid); line-height: 1.8;
+    }
+    .process-table tr:nth-child(even) td { background: var(--bg); }
+    .process-table td:first-child {
+      font-weight: 600; color: var(--teal);
+    }
+    .process-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+    .process-table tr:last-child td:last-child  { border-radius: 0 0 8px 0; }
+
+    /* 引用ボックス */
+    .quote-box {
+      background: var(--teal-lt);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem; margin: 1.2rem 0;
+      font-size: .88rem; color: var(--text); line-height: 1.9;
+    }
+
+    /* ─── OT × SP SECTION ─── */
+    #ot-sp { background: var(--white); }
+
+    /* 価値を伝えるハイライトバナー */
+    .ot-banner {
+      background: linear-gradient(135deg, #0D4F42 0%, #1E7B6A 100%);
+      color: #fff; border-radius: 16px;
+      padding: 2.2rem 2.2rem; margin-bottom: 2rem;
+      position: relative; overflow: hidden;
+    }
+    .ot-banner::after {
+      content: ''; position: absolute; right: -30px; bottom: -30px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: rgba(255,255,255,.06); pointer-events: none;
+    }
+    .ot-banner h3 {
+      font-family: 'Lora', serif; font-size: 1.25rem;
+      font-weight: 600; line-height: 1.5; margin-bottom: .7rem;
+      position: relative;
+    }
+    .ot-banner p {
+      font-size: .92rem; opacity: .9; line-height: 1.9; position: relative;
+    }
+
+    /* 同じ article / article-block スタイルを共用 */
+
+    /* RCOTの4つの役割カード */
+    .roles-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin: 1.3rem 0;
+    }
+    .role-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 10px 10px 0; padding: 1.3rem 1.4rem;
+    }
+    .role-card .role-no {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif; font-size: .72rem;
+      font-weight: 700; letter-spacing: .08em;
+      color: var(--teal); background: var(--teal-lt);
+      padding: .2rem .7rem; border-radius: 50px; margin-bottom: .6rem;
+    }
+    .role-card .role-title {
+      font-size: .92rem; font-weight: 700; color: var(--text);
+      margin-bottom: .45rem; line-height: 1.5;
+    }
+    .role-card p {
+      font-size: .85rem; color: var(--text-mid);
+      line-height: 1.85; margin: 0;
+    }
+
+    /* 強調ポイントボックス（OTの有益性） */
+    .value-box {
+      background: var(--amber-lt);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 8px 8px 0;
+      padding: 1.1rem 1.3rem; margin: 1.2rem 0;
+    }
+    .value-box .value-label {
+      font-size: .73rem; font-weight: 700; letter-spacing: .06em;
+      color: #B86B0A; margin-bottom: .35rem;
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .value-box p {
+      font-size: .88rem; color: var(--text); line-height: 1.9; margin: 0;
+    }
 
     /* ─── DIVIDER ─── */
     .divider {
@@ -420,7 +543,6 @@
 
     /* ─── RESPONSIVE: Tablet ─── */
     @media (max-width: 900px) {
-      .trends-grid  { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
 
@@ -434,7 +556,6 @@
 
       /* 全グリッドを1カラム */
       .about-grid,
-      .trends-grid,
       .cases-grid,
       .footer-inner {
         grid-template-columns: 1fr;
@@ -447,11 +568,25 @@
       .btn { width: 100%; max-width: 260px; text-align: center; }
 
       /* カード余白縮小 */
-      .trend-card,
       .case-card,
       .rf-card { padding: 1.1rem; }
       .mr-body  { padding: 1.1rem 1.1rem 1.1rem 1.3rem; }
       .about-box { padding: 1.5rem; }
+
+      /* 動向セクション(長文記事) */
+      .article-block { padding: 1.3rem 1.2rem; }
+      .article-block-head { gap: .7rem; }
+      .article-block-head h3 { font-size: 1.02rem; }
+      .article-num { width: 32px; height: 32px; font-size: .92rem; }
+      .process-table { font-size: .8rem; }
+      .process-table th,
+      .process-table td { padding: .55rem .6rem; }
+
+      /* 作業療法セクション */
+      .roles-grid { grid-template-columns: 1fr; gap: .8rem; }
+      .role-card  { padding: 1.1rem 1.2rem; }
+      .ot-banner  { padding: 1.5rem 1.4rem; }
+      .ot-banner h3 { font-size: 1.1rem; }
 
       /* RFトップ縦並び */
       .rf-top { flex-direction: column; gap: .35rem; }
@@ -468,12 +603,13 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      木口 尚人
+      木口 直人
       <span>Naoto Kiguchi, OT, PhD</span>
     </a>
     <ul class="nav-links">
       <li><a href="#about">紹介</a></li>
       <li><a href="#trends">動向</a></li>
+      <li><a href="#ot-sp">作業療法</a></li>
       <li><a href="#myresearch">自身の研究</a></li>
       <li><a href="#research">世界の研究</a></li>
       <li><a href="#cases">事例</a></li>
@@ -496,9 +632,10 @@
   <ul class="mobile-menu-list">
     <li><a href="#about" class="mm-link"><span><span class="mm-num">01</span>紹介<span class="mm-sub">About</span></span><span class="mm-arrow">›</span></a></li>
     <li><a href="#trends" class="mm-link"><span><span class="mm-num">02</span>社会的処方の動向<span class="mm-sub">Trends</span></span><span class="mm-arrow">›</span></a></li>
-    <li><a href="#myresearch" class="mm-link"><span><span class="mm-num">03</span>自身の研究<span class="mm-sub">My Research</span></span><span class="mm-arrow">›</span></a></li>
-    <li><a href="#research" class="mm-link"><span><span class="mm-num">04</span>世界の研究<span class="mm-sub">World Research</span></span><span class="mm-arrow">›</span></a></li>
-    <li><a href="#cases" class="mm-link"><span><span class="mm-num">05</span>事例紹介<span class="mm-sub">Case Studies</span></span><span class="mm-arrow">›</span></a></li>
+    <li><a href="#ot-sp" class="mm-link"><span><span class="mm-num">03</span>社会的処方と作業療法<span class="mm-sub">OT &amp; Social Prescribing</span></span><span class="mm-arrow">›</span></a></li>
+    <li><a href="#myresearch" class="mm-link"><span><span class="mm-num">04</span>自身の研究<span class="mm-sub">My Research</span></span><span class="mm-arrow">›</span></a></li>
+    <li><a href="#research" class="mm-link"><span><span class="mm-num">05</span>世界の研究<span class="mm-sub">World Research</span></span><span class="mm-arrow">›</span></a></li>
+    <li><a href="#cases" class="mm-link"><span><span class="mm-num">06</span>事例紹介<span class="mm-sub">Case Studies</span></span><span class="mm-arrow">›</span></a></li>
   </ul>
 </div>
 
@@ -507,7 +644,7 @@
   <div class="hero-inner">
     <span class="hero-badge">Social Prescribing × Occupational Therapy</span>
     <h1>
-      社会的処方×作業療法<br>
+      作業を処方する。<br>
       <em>Prescribing Occupation for Health.</em>
     </h1>
     <p class="hero-sub">
@@ -525,18 +662,23 @@
         <span class="hm-jp">社会的処方の動向</span>
         <span class="hm-en">Trends</span>
       </a>
-      <a href="#myresearch" class="hm-item">
+      <a href="#ot-sp" class="hm-item">
         <span class="hm-num">03</span>
+        <span class="hm-jp">社会的処方と作業療法</span>
+        <span class="hm-en">OT &amp; SP</span>
+      </a>
+      <a href="#myresearch" class="hm-item">
+        <span class="hm-num">04</span>
         <span class="hm-jp">自身の研究</span>
         <span class="hm-en">My Research</span>
       </a>
       <a href="#research" class="hm-item">
-        <span class="hm-num">04</span>
+        <span class="hm-num">05</span>
         <span class="hm-jp">世界の研究</span>
         <span class="hm-en">World Research</span>
       </a>
       <a href="#cases" class="hm-item">
-        <span class="hm-num">05</span>
+        <span class="hm-num">06</span>
         <span class="hm-jp">事例紹介</span>
         <span class="hm-en">Case Studies</span>
       </a>
@@ -563,7 +705,7 @@
         <div class="profile-card">
           <div class="profile-avatar">木</div>
           <div class="profile-info">
-            <h3>木口 尚人（Naoto Kiguchi）</h3>
+            <h3>木口 直人（Naoto Kiguchi）</h3>
             <p class="title">作業療法士・博士（保健医療科学）<br>茨城県立医療大学 保健医療学部 作業療法学科 助教</p>
             <div class="profile-tags">
               <span class="tag">社会的処方</span>
@@ -593,42 +735,211 @@
   <div class="section-inner">
     <span class="section-tag amber">Trends / 動向</span>
     <h2>
-      <span class="en">Global & Japanese Trends in Social Prescribing</span>
+      <span class="en">Trends in Social Prescribing</span>
       社会的処方の動向
     </h2>
-    <p class="lead">社会的処方は英国を中心に世界へ急速に普及し、日本でも政策的・実践的関心が高まっています。</p>
+    <p class="lead">社会的処方の背景・定義・支援方法から、英国を中心とした国際的展開、そして日本の現状までを概観します。</p>
 
-    <div class="trends-grid">
-      <div class="trend-card">
-        <div class="trend-icon">🌍</div>
-        <h3>世界的な普及</h3>
-        <p>英国（NASP）、カナダ、オーストラリア、欧州各国で国家戦略として位置づけられ、WHOも地域保健政策の重要ツールとして推奨。2020年代にはアジア諸国でも研究・実践が急増しています。</p>
+    <div class="article">
+
+      <!-- 1 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">1</span>
+          <h3>社会的処方導入の背景と世界的な広がり</h3>
+        </div>
+        <p>近年、少子高齢化や経済格差の拡大といった社会的問題が拡大し、人々の健康に与える影響要因として、疾病や疾患だけでなく社会的問題の重要性が注目されている。世界保健機関(WHO)は、人々が生まれ、育ち、働き、生活し、老いるという状況、また日々の生活の状況を形作るより広範な力を<strong>健康の社会的決定要因(Social Determinants of Health：SDH)</strong>と定め、これらが健康問題の根本的な原因の多くを占める要因だとしている。人々の健康に影響を与える要因の少なくとも50％がSDHに起因しているとされ、医療従事者には、疾病や疾患への治療にとどまらず社会的要因も含めた支援を行うことの重要性が高まっている。</p>
+        <p>2006年の英国議会において、健康、自立、地域のサービスへのアクセスを促進するための仕組みとして、<strong>社会的処方(Social Prescribing：SP)</strong>という言葉が誕生した。SPはSDHへの対処手段の一つとして、また健康の不平等を減らすための重要なツールとして位置づけられ、その概念は世界中に広がり、英国以外にも制度の導入を検討する国がある。</p>
+        <p>オーストラリアでは、看護師やOT、コミュニティサポートワーカーといった専門家が人々を地域サービスに結びつける取り組みの歴史があり、全土にSPを取り入れる動きがある。スウェーデン、ノルウェー、デンマークには芸術活動を介して健康を支援する文化があり、英国のSPを参考にした取り組みの可能性が報告されている。台湾でも、台湾大学付属病院と国立台湾博物館によるSP事業が始まり、精神科医が認知症患者の支援を目的にSPを処方している。このほか、デンマーク、アイルランド、スペイン、アメリカ、オランダでも、英国のSPに類似する支援が行われている。</p>
       </div>
-      <div class="trend-card">
-        <div class="trend-icon">🏥</div>
-        <h3>日本での政策的関心</h3>
-        <p>「地域共生社会」「孤独・孤立対策」「健康の社会的決定要因への対応」の政策枠組みのもと、社会的処方の概念が医療・福祉・行政の分野で注目されています。</p>
+
+      <!-- 2 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">2</span>
+          <h3>社会的処方とは</h3>
+        </div>
+        <p>SPの統一された定義や支援方法は定まっていない。SPを推進する英国の機関であるThe King's Fundは、SPを「患者を社会資源につなげ、個人が自分の健康をより良くコントロールできるようにサポートすること」と定義している。WHOは、SPを地域にある非医療サービスへの結びつきによって健康とWell-beingを促進する手段と位置づけている。</p>
+        <div class="quote-box">
+          SPの定義を目的とした文献レビューにおいて、西岡らはSPを「医療機関などを起点として、健康問題を引き起こしたり治療の妨げとなる可能性のある社会的課題を抱える患者に対して、その社会的課題を解決し得る非医療的な社会資源につなげ、ケアの機会を患者とともにつくる活動」とした。
+        </div>
+        <p>このように、SPに統一された定義はないものの、さまざまな定義に共通する内容として、医療従事者が患者の健康やWell-beingの改善を目的に、非医療資源への参加を通して支援するものであるといえる。</p>
       </div>
-      <div class="trend-card">
-        <div class="trend-icon">🔗</div>
-        <h3>リンクワーカーの役割</h3>
-        <p>医療機関と地域資源をつなぐ「リンクワーカー」が社会的処方の中心的役割を担います。日本ではこの役割を担う職種の整備が課題であり、作業療法士の可能性が検討されています。</p>
+
+      <!-- 3 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">3</span>
+          <h3>社会的処方の支援方法</h3>
+        </div>
+        <p>英国の医療保障制度の特徴の一つとして、<span class="term">General Practitioner(GP)</span>の存在がある。GPは家庭医(かかりつけ医)に位置づけられ、英国では救急の場合を除き、医療機関を受診する際には登録したGPの診察を受ける必要がある。英国の一般的なSPの流れは、GPを中心とする医療従事者が患者にSPを行い、処方を受けた患者に対して<span class="term">リンクワーカー(Link Worker：LW)</span>が面談を行い、患者のニーズを満たす非医療資源の紹介と参加を支援するものである。</p>
+        <p>英国のSPに統一された方法はないが、複数の政府関連報告書に共通する支援プロセスとして、次の流れが共有して行われている傾向にある。</p>
+        <table class="process-table">
+          <thead>
+            <tr><th>プロセス</th><th>内容</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. 処方／紹介</td>
+              <td>医療専門職を中心に、時には福祉専門職や地域機関からの処方、または個人の依頼でSPの支援が開始される</td>
+            </tr>
+            <tr>
+              <td>2. ニーズ評価</td>
+              <td>LWなどの専門職が関係性構築を図り、会話や面接を通して個人の状況やニーズを理解し、共同して支援計画を作成する</td>
+            </tr>
+            <tr>
+              <td>3. 参加支援</td>
+              <td>コーチングや面接技法を活用して行動変容を促しながら、多機関・多職種と連携してニーズを満たす非医療資源へつなぐ</td>
+            </tr>
+            <tr>
+              <td>4. フォローアップ</td>
+              <td>非医療資源への参加継続のための支援や成果評価を行う</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>LWとは、必ずしも臨床経験を持たない者であり、地域で利用可能な資源に関する情報を把握し、SPを受けた患者とニーズや目標の共有を行い、ニーズに合う非医療資源の紹介や参加のために伴走を行う専門職を指す。LWには、高度な対人コミュニケーションスキル、地域社会に関する包括的な知識、患者の複雑性を理解し現実的な目標設定を行うスキルの習得の重要性が示されている。英国のLWがいない他の諸外国では、Well-beingコーチと呼ばれる新たな専門職を設けている国や、看護師やソーシャルワーカーといった既存の保健医療専門職をLWとして位置づけている国がある。</p>
+        <p>SPで扱われる地域の非医療資源には、ボランティア活動、芸術活動、ガーデニングや料理教室などに加え、新たな交流関係の支援、身体的健康への支援、金銭管理支援、家族や友人との関係性の支援など、多様な資源が含まれる。SPの対象者はあらゆる年齢層・全人口であり、特に効果的とされる対象者として、慢性的な症状を抱える人、精神的健康面でサポートが必要な人、孤立や孤独を感じている人、健康に影響を与える複雑な社会的ニーズを持つ人が挙げられている。</p>
       </div>
-      <div class="trend-card">
-        <div class="trend-icon">📊</div>
-        <h3>エビデンスの蓄積</h3>
-        <p>精神的健康、孤独感の軽減、医療利用の減少など多様なアウトカムで効果が報告されています。日本固有の制度に適合した実装モデルの研究が急務です。</p>
+
+      <!-- 4 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">4</span>
+          <h3>社会的処方と医療専門職の関わり(アライドヘルスプロフェッショナルによる社会的処方)</h3>
+        </div>
+        <p>2018年、英国では二次医療を利用する患者に対するSPの取り組みが始まり、OTや理学療法士、退院支援チーム、ソーシャルワーカーなどさまざまな職種がSPに取り組んでいることを英国の<span class="term">国民保健サービス(National Health Service：NHS)</span>が報告した。</p>
+        <p>2019年には、医師、歯科医師、看護師、薬剤師を除く医療専門職である<span class="term">アライドヘルスプロフェッショナル(Allied Health Professionals：AHP)</span>によるSPの枠組みが発表された。2,300名以上のAHPの意見を集約した報告書によると、AHPは既にSPに類似する活動を行っており、回答者の7割以上がLWの有無にかかわらずSPを職務上重要な要素と捉えていることが明らかにされた。AHPは、LWへの患者紹介やAHP自身が直接行う「SP」と、サービスへの道筋を見つけられる自信とスキルのある対象者に情報や選択肢を提供する「アクティブ・サインポスティング」とを区別して取り組んでいることも報告されている。</p>
+        <p>英国においてSPという枠組みでは、これまで医師が中心となり非医療資源を介した支援が行われてきたが、この報告書により、AHPはSPという言葉を使わずに同様の患者支援を実践してきた歴史があることが改めて明らかになった。今後のSPの発展のために、医師以外の医療専門職のそれぞれの専門性をより理解した形での連携が期待されている。</p>
       </div>
-      <div class="trend-card">
-        <div class="trend-icon">🌿</div>
-        <h3>多様な処方内容</h3>
-        <p>自然・緑地活動（グリーン処方）、芸術・文化活動、スポーツ・身体活動、ボランティア、社会参加など、個人の興味・関心に合わせた地域活動が処方されます。</p>
+
+      <!-- 5 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">5</span>
+          <h3>社会的処方の課題</h3>
+        </div>
+        <p>SPを行う上での障壁としては、非医療資源の不足、関係職種間の理解不足、不適切な非医療資源の紹介、LWの準備不足、患者のサービスへの理解や同意の欠如、関連職種の離職などが報告されており、SPの実施内容や質は英国内で地域差が生じている。OTを含むAHPがSPを行う際の障壁としては、地域で利用可能なサービスを知らないことが最も高く、AHPがLWの存在を知らないこと、実施する時間の不足などが報告されている。</p>
+        <p>SPの内容の地域差や定義の不統一などにより、GPを中心としてLWを介して非医療資源を処方するSPプログラムの効果検証は十分に行われておらず、さらなる検証の必要性が高い。一方、英国でSPが導入されて10年ほど経過し、NHSは患者のニーズに応じてサービスを細分化し、SPおよびLWの位置づけをより明確化した。例えば、地域参加や孤立などの課題にはLWが主に対応するSPを位置づけ、健康上の問題や不安にはヘルス＆ウェルビーイング・コーディネーターを、フレイルやケアプランの支援にはケアコーディネーターを、というように役割を分担させた。このように、英国ではSPやLWの位置づけ・支援内容の整理が進み、制度としてのSPの構築が進展している。</p>
       </div>
-      <div class="trend-card">
-        <div class="trend-icon">🤝</div>
-        <h3>多職種連携の重要性</h3>
-        <p>社会的処方の実装には、医師・看護師・社会福祉士・作業療法士・地域住民・行政が連携した包括的なチームアプローチが不可欠です。</p>
+
+      <!-- 6 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">6</span>
+          <h3>日本における社会的処方の現状</h3>
+        </div>
+        <p>SDHへの関心は日本でも高まりを見せており、2012年に公表された健康日本21(第2次)において健康格差の縮小が言及され、2019年には医学教育モデル・コア・カリキュラムにもSDHに関する学修が盛り込まれた。日本ではこれまでに、地域包括ケアシステムの構築や生活困窮者自立支援制度など、対象者の抱える社会的なニーズに対して包括的な支援を行う施策が進められている。</p>
+        <p>こうした中、SDHに起因した健康問題への方略として、近年日本国内にSPを導入する動きが起きている。2020年には「経済財政運営と改革の基本方針2020(骨太の方針2020)」において、予防・健康づくりや重症化予防の推進策としてSPのモデル事業実施が盛り込まれ、閣議決定された。この資料においてSPは、「かかりつけ医などが患者の社会生活面の課題にも目を向け、地域社会におけるさまざまな支援へとつなげる取組」とされた。その後、2021年以降の報告書では、孤立・孤独対策としてSPを活用していくことが明示された。</p>
+        <p>2020年には、厚生労働省が「かかりつけ医による連携強化事業」という名で、かかりつけ医を中心としたSPに類似する支援のモデル事業の実証検証に着手し、3年間で9府県計10事業を採択した。これらの事業では、LW役を担う職種は自治体に所属する保健師や栄養士、看護師といった行政の担当職種が担う傾向にあり、扱われる非医療資源は行政が行う既存の相談事業や支援事業が主に使用された。</p>
+        <p>一方で、SPの国内導入におけるさまざまな問題も指摘されている。医療現場と非医療資源をリンクさせる方法は各医療機関や地域でばらつきがあり標準的でないこと、診療現場で患者の社会的リスクを正確かつ効率的に評価できるツールやプロトコール開発の必要性が指摘されている。また、これまでの日本におけるSP類似事業の多くは既存の行政サービスを活用した医療・福祉連携が中心であり、英国のSPで活用されるような多様な非医療資源を活用するまでには至っていない。さらに、日本のモデル事業では実際の参加に至るまでの支援や参加継続支援は少なく、多くが情報提供のみの支援(アクティブ・サインポスティング)に留まっていた。</p>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OT × SOCIAL PRESCRIBING -->
+<section id="ot-sp">
+  <div class="section-inner">
+    <span class="section-tag">OT & SP / 作業療法</span>
+    <h2>
+      <span class="en">Social Prescribing & Occupational Therapy</span>
+      社会的処方と作業療法 ― 国際的動向と日本における実践
+    </h2>
+    <p class="lead">作業療法士(OT)は、社会的処方の実装において国際的に有益な専門職として位置づけられています。本セクションでは、その根拠を国際的動向と日本の実践から示します。</p>
+
+    <!-- 価値を伝えるバナー -->
+    <div class="ot-banner">
+      <h3>なぜ作業療法士は社会的処方の実装に有益なのか</h3>
+      <p>作業療法士は、医学的知識に加え、作業科学や作業療法理論という作業支援に必要な学問的知識と経験を有し、長年にわたり社会参加支援に取り組んできました。この専門性ゆえに、WHO・英国王立作業療法士協会・英国NHSをはじめ、社会的処方の担い手としてOTへの期待が国際的に高まっています。</p>
+    </div>
+
+    <div class="article">
+
+      <!-- 1 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">1</span>
+          <h3>WHOによる作業療法士の位置づけ</h3>
+        </div>
+        <p>世界保健機関(WHO)は社会的処方(Social Prescribing：SP)の導入マニュアルを作成し、英国のリンクワーカー(Link Worker：LW)に該当する職種として、作業療法士(Occupational Therapist：OT)、看護師、ソーシャルワーカーといった職種を推奨している。社会的処方を支える担い手として、<strong>OTはWHOの導入マニュアルに明記されている</strong>。</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">2</span>
+          <h3>英国王立作業療法士協会(RCOT)による位置づけと4つの役割</h3>
+        </div>
+        <p>連合保健専門職(Allied Health Professions：AHP)の一つであるOTの職能団体、英国王立作業療法士協会(the Royal College of Occupational Therapists：RCOT)は、社会参加支援を作業療法の専門性の中核に据え、SPの発展においてOTは重要なパートナーであると位置づけている。特に、SPの利用率が低い地域において、SPサービスを開発・導入するのに適したスキルを作業療法が有していることを主張している。</p>
+        <p>英国王立作業療法士協会は、SPにおけるOTの役割として以下の4点を挙げている。</p>
+
+        <div class="roles-grid">
+          <div class="role-card">
+            <span class="role-no">第一の役割</span>
+            <p class="role-title">知識の提供</p>
+            <p>地域のSPを利用する人々が自立してサービスを利用できるよう、知識を提供すること。</p>
+          </div>
+          <div class="role-card">
+            <span class="role-no">第二の役割</span>
+            <p class="role-title">協力関係の確立と移行支援</p>
+            <p>SPサービスや実践家(LWなど)との協力関係を確立して支援を行い、サービス間のスムーズな移行を可能にすること。</p>
+          </div>
+          <div class="role-card">
+            <span class="role-no">第三の役割</span>
+            <p class="role-title">専門的な助言・指導</p>
+            <p>SPに関わる専門家に対して、専門的な助言、指導、スーパービジョンを提供すること。</p>
+          </div>
+          <div class="role-card">
+            <span class="role-no">第四の役割</span>
+            <p class="role-title">主導と研究への貢献</p>
+            <p>複雑なニーズを持つ人々に対してSPが果たす役割を示したり、SPイニシアチブを主導したり、進行中のSP研究に貢献したりすること。</p>
+          </div>
+        </div>
+
+        <p>さらに、英国のOTによるSPの取り組みとして、SPを行うGP(一般医)への作業科学の知見に基づく助言、医学や作業療法の知識を活かして誰もが参加できるSPで処方される非医療資源の企画や運営、人―環境―作業モデルを用いてLWを育成する役割、LWでは対応しきれない難渋事例に対してLWの役割を担う活動などが報告されている。</p>
+
+        <div class="value-box">
+          <div class="value-label">◆ OTの有益性を示す知見</div>
+          <p>さまざまなAHPのSP活動が注目される中、LWを介さないSPを週1回以上行う頻度は12業種の中でOTが最も多く、作業科学の専門家として協業する経験が豊富であることから、英国の国民保健サービス(NHS)は、患者をLWに紹介するタイミングを定めたり、LWと協力して非医療資源への参加を支援するSPの活動などをOTに期待している。</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">3</span>
+          <h3>英国以外の国々への広がり</h3>
+        </div>
+        <p>OTによるSPの活動は英国以外の国々でも広がりつつある。カナダでも英国と類似するSPのシステムが地域レベルで導入が進んでおり、健康問題や社会的課題のある患者に対して医師が街の美術館への参加を処方する取り組みなどが行われている。カナダ作業療法士協会長は、LWの支援がうまくいかない場合にはOTによるより深い作業分析の必要性を示唆し、SPは作業療法の価値を明確にする機会であると位置付けている。</p>
+        <p>オーストラリアでは既に小規模のSPが行われており、社会的なつながりを促進し、人々を結びつける一専門家としてOTの活躍が報告されている。今後、SPのシステムの構築に向けて、LWと専門職の関係の整備が進められている。</p>
+        <p>このように、医学的知識に加え、作業科学や作業療法理論など作業支援に必要な学問的知識と経験を有し、長年社会参加支援に取り組んできた<strong>OTのSPへの関与は、英国以外でも期待されている</strong>。</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">4</span>
+          <h3>日本における作業療法士の歴史的取り組み ― 日本作業療法士協会の5か年戦略</h3>
+        </div>
+        <p>日本作業療法士協会では、2008年にその5か年戦略にて地域生活移行支援の推進を掲げた。重点事項としてのスローガンは、次のように明言されている。</p>
+        <div class="quote-box">
+          「医療と地域生活支援の両サービスにまたがり、医療から介護・福祉への円滑な移行を推進する担い手としてOTは重要な役割を果たすこと」
+        </div>
+        <p>この方針は現在に至るまで継承され、地域共生社会の実現に寄与する専門職として、医療と地域生活支援の両サービスにまたがる担い手として実践を行うことが推進されている。</p>
+        <p>実践においても、日本のOTによる作業療法対象者への地域の非医療資源参加を通した健康の維持・促進支援に関する報告があり、SPに類似する実践が長きにわたり行われてきたと考えられる。日本のOTは英国のOT同様に、これまでも社会的課題により健康問題が生じることが予測される患者/利用者や、問題が生じている患者/利用者に対して、SPに類似する非医療資源への参加・定着の支援に取り組んできたと考えられる。</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="article-block">
+        <div class="article-block-head">
+          <span class="article-num">5</span>
+          <h3>日本における今後の課題</h3>
+        </div>
+        <p>こうした役割をこれまでもOTが担ってきたにも関わらず、SPの枠組みの中で他職種をはじめ国に認識されないことは、専門職としての在り方としても、SPに関わるサービスの受け手にとっても、好ましい状況にあるとはいえない。WHOや他国で期待されているように、日本においても、OTが非医療資源を活用し社会的課題に起因する健康問題の解決を支援する主な専門職として認識されるためには、日本のOTによるSPに類似する支援の実践状況を明らかにすることは急務であるといえる。</p>
+        <p>特に、かかりつけ医など医師が主導で行われるSP制度も検討されている中、医療機関で働くOTの実情を理解し、実践状況を明らかにすることは重要であると考えられる。他国と異なる健康保険・福祉制度を持つ日本において、OTがSPに類似する支援を行う際にどのような困難を抱えているかを明らかにし、効果的な支援をするための方略に関する知見を得ることは、地域共生社会の構築に寄与する専門職として重要である。</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -871,7 +1182,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <h3>木口 尚人 / Naoto Kiguchi</h3>
+      <h3>木口 直人 / Naoto Kiguchi</h3>
       <p>
         茨城県立医療大学 保健医療学部 作業療法学科 助教<br>
         Assistant Professor, Department of Occupational Therapy<br>
@@ -884,6 +1195,7 @@
       <ul>
         <li><a href="#about">紹介・プロフィール</a></li>
         <li><a href="#trends">社会的処方の動向</a></li>
+        <li><a href="#ot-sp">社会的処方と作業療法</a></li>
         <li><a href="#myresearch">自身の研究</a></li>
         <li><a href="#research">世界の研究</a></li>
         <li><a href="#cases">事例紹介</a></li>
